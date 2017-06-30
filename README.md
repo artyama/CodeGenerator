@@ -153,5 +153,3 @@ CodeGenerator
     Integer seq               KEY_SEQ
 
 
-##作者
-ptma@163.com

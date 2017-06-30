@@ -3,26 +3,93 @@
     <classpath>
         <entry>lib/ojdbc14.jar</entry>
         <entry>lib/sqljdbc4.jar</entry>
+        <entry>lib/sqljdbc4.jar</entry>
         <entry>lib/mysql-connector-java-5.1.36-bin.jar</entry>
         <entry>lib/postgresql-8.2-505.jdbc2.jar</entry>
     </classpath>
     <connections>
-
+        <database name="root">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://192.168.1.130:3306/mellower</url>
+            <username>root</username>
+            <password>Yx123456a!</password>
+            <schema/>
+        </database>
     </connections>
     <targetProject>D:\temp</targetProject>
-    <basePackage>org.joy</basePackage>
-    <moduleName>test</moduleName>
+    <basePackage>com.mellower</basePackage>
+    <moduleName>address</moduleName>
     <templates>
-        <template engine="freemarker" name="实体类" selected="false">
-            <templateFile>entity.ftl</templateFile>
-            <targetPath>${targetProject}\src\${basePackage}\${moduleName}\entity\</targetPath>
-            <targetFileName>${table.className}.java</targetFileName>
+        <template engine="freemarker" name="PageBean" selected="true">
+            <templateFile>Page.ftl</templateFile>
+            <targetPath>src\${basePackage}\page\${moduleName}\</targetPath>
+            <targetFileName>${table.className}Page.java</targetFileName>
             <encoding>UTF-8</encoding>
         </template>
-        <template engine="velocity" name="实体类" selected="false">
-            <templateFile>entity.vm</templateFile>
-            <targetPath>${targetProject}\\src\\${basePackage}\\${moduleName}\\entity\\</targetPath>
-            <targetFileName>${table.className}2.java</targetFileName>
+        <template engine="freemarker" name="Service" selected="true">
+            <templateFile>Service.ftl</templateFile>
+            <targetPath>src\${basePackage}\service\${moduleName}\</targetPath>
+            <targetFileName>${table.className}Service.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="ServiceImp" selected="true">
+            <templateFile>ServiceImp.ftl</templateFile>
+            <targetPath>src\${basePackage}\service\${moduleName}\</targetPath>
+            <targetFileName>${table.className}ServiceImp.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="Controller" selected="true">
+            <templateFile>Controller.ftl</templateFile>
+            <targetPath>src\${basePackage}\controller\${moduleName}\</targetPath>
+            <targetFileName>${table.className}Controller.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="BaseDao" selected="true">
+            <templateFile>BaseDao.ftl</templateFile>
+            <targetPath>src\${basePackage}\repository\${moduleName}\</targetPath>
+            <targetFileName>${table.className}Mapper.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="Entity-Mapper(XML)" selected="true">
+            <templateFile>generatorConfig.ftl</templateFile>
+            <targetPath>templates\freemarker\batconf\</targetPath>
+            <targetFileName>generatorConfig.xml</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="EntityWithBLOBs" selected="true">
+            <templateFile>EntityWithBLOBs.ftl</templateFile>
+            <targetPath>src\${basePackage}\entity\${moduleName}\</targetPath>
+            <targetFileName>${table.className}WithBLOBs.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="JSP(flat)" selected="false">
+            <templateFile>jsp_list.ftl</templateFile>
+            <targetPath>src\${basePackage}\view\${moduleName}\${table.tableAlias}\</targetPath>
+            <targetFileName>list.jsp</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="JS(flat)" selected="false">
+            <templateFile>js_list.ftl</templateFile>
+            <targetPath>src\${basePackage}\js\${moduleName}\</targetPath>
+            <targetFileName>${table.tableAlias}.js</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="JSP(pop_list)" selected="true">
+            <templateFile>jsp_pop_list.ftl</templateFile>
+            <targetPath>src\${basePackage}\view\${moduleName}\${table.tableAlias}\</targetPath>
+            <targetFileName>list.jsp</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="JSP(pop_form)" selected="true">
+            <templateFile>jsp_pop_form.ftl</templateFile>
+            <targetPath>src\${basePackage}\view\${moduleName}\${table.tableAlias}\</targetPath>
+            <targetFileName>form.jsp</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="JS(pop)" selected="true">
+            <templateFile>js_pop_list.ftl</templateFile>
+            <targetPath>src\${basePackage}\js\${moduleName}\</targetPath>
+            <targetFileName>${table.tableAlias}.js</targetFileName>
             <encoding>UTF-8</encoding>
         </template>
     </templates>

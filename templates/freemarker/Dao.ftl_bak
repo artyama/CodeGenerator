@@ -1,0 +1,51 @@
+<#include "copyright.ftl"/>
+package ${basePackage}.repository.${moduleName};
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.jy.common.mybatis.Page;
+import com.jy.repository.base.BaseDao;
+import com.jy.repository.base.JYBatis;
+import com.mars.entity.activity.Activity;
+import ${basePackage}.entity.${moduleName}.${table.className};
+import ${basePackage}.page.${moduleName}.${table.className}Page;
+
+/**
+ * <p>DAO接口</p>
+ * <p>Table: ${table.tableName} - ${table.remarks}</p>
+ *
+ * @since ${.now}
+ */
+
+@JYBatis
+public interface ${table.className}Dao extends BaseDao<${table.className}> {
+
+	/**
+	 * @description 插入返回
+	 * @return ID
+	 */
+	public Integer pageInsert(${table.className} entity);
+	
+	/**
+	 * @description 查询单个
+	 * @return ${table.className}
+	 */
+	public ${table.className} findSingle(${table.className} entity);
+	
+	/**
+	 * @description 全属性(not null)通用查询
+	 * @return List<${table.className}>
+	 */
+	public List<${table.className}> findGeneral(${table.className} entity);
+	
+	/**
+	 * @description 全属性(not null)通用修改
+	 * @return List<${table.className}>
+	 */
+	public void updateGeneral(${table.className} entity);
+	/*      #############################接口方法################################  */
+		
+}
