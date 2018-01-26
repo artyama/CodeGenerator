@@ -34,7 +34,7 @@ import ${basePackage}.service.${moduleName}.${table.className}Service;
  */
 
 @Controller
-@RequestMapping("/backstage/${moduleName}/")
+@RequestMapping("/backstage/${table.tableAlias}/")
 public class ${table.className}Controller extends BaseController<${table.className}> {
 	/**
 	 * 将前台传递过来的日期格式的字符串，自动转化为Date类型
@@ -48,7 +48,7 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 
 
 	@Autowired
-	private ${table.className}Service ${table.tableAlias}Service;
+	private ${table.className}Service ${table.javaProperty}Service;
 
 	/**
 	 * @Description: 菜单入口
@@ -72,9 +72,9 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 	@ResponseBody
 	public AjaxRes findByPage(Page<${table.className}> page, ${table.className} o) {
 		AjaxRes ar = getAjaxRes();
-		if (ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_MENU, "/backstage/${moduleName}/index"))) {
+		if (ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_MENU, "/backstage/${table.tableAlias}/index"))) {
 			try {
-				Page<${table.className}> list = ${table.tableAlias}Service.findByPage(o, page);
+				Page<${table.className}> list = ${table.javaProperty}Service.findByPage(o, page);
 				Map<String, Object> p = new HashMap<String, Object>();
 				p.put("permitBtn", getPermitBtn(Const.RESOURCES_TYPE_BUTTON));
 				p.put("list", list);
@@ -98,7 +98,7 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 		AjaxRes ar = getAjaxRes();
 		if (ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_BUTTON))) {
 			try {
-				${table.className} o = ${table.tableAlias}Service.findById(entity.getId());
+				${table.className} o = ${table.javaProperty}Service.findById(entity.getId());
 				ar.setSucceed(o);
 			} catch (Exception e) {
 				logger.error(e.toString(), e);
@@ -114,7 +114,7 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 		AjaxRes ar=getAjaxRes();
 		if(ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_FUNCTION))){			
 			try {
-				${table.tableAlias}Service.saveOrUpdate(wbs);
+				${table.javaProperty}Service.saveOrUpdate(wbs);
 				ar.setSucceedMsg(Const.SAVE_SUCCEED);
 			} catch (Exception e) {
 				logger.error(e.toString(),e);
@@ -130,7 +130,7 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 		AjaxRes ar=getAjaxRes();
 		if(ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_BUTTON))){
 			try {
-				${table.tableAlias}Service.saveOrUpdate(wbs);
+				${table.javaProperty}Service.saveOrUpdate(wbs);
 				ar.setSucceedMsg(Const.SAVE_SUCCEED);
 			} catch (Exception e) {
 				logger.error(e.toString(),e);
@@ -151,7 +151,7 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 		if(ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_FUNCTION))){
 			try {
 				
-				${table.tableAlias}Service.saveOrUpdate(wbs);
+				${table.javaProperty}Service.saveOrUpdate(wbs);
 				ar.setSucceedMsg(Const.UPDATE_SUCCEED);
 			} catch (Exception e) {
 				logger.error(e.toString(),e);
@@ -172,7 +172,7 @@ public class ${table.className}Controller extends BaseController<${table.classNa
 		if(ar.setNoAuth(doSecurityIntercept(Const.RESOURCES_TYPE_BUTTON))){
 			try {
 				
-				${table.tableAlias}Service.deleteById(entity.getId());
+				${table.javaProperty}Service.deleteById(entity.getId());
 				ar.setSucceedMsg(Const.DEL_SUCCEED);
 			} catch (Exception e) {
 				logger.error(e.toString(),e);

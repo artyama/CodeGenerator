@@ -18,7 +18,7 @@
     </connections>
     <targetProject>D:\temp</targetProject>
     <basePackage>com.mellower</basePackage>
-    <moduleName>address</moduleName>
+    <moduleName>card</moduleName>
     <templates>
         <template engine="freemarker" name="PageBean" selected="true">
             <templateFile>Page.ftl</templateFile>

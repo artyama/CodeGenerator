@@ -29,15 +29,15 @@ import net.sf.json.util.JSONUtils;
 public class ${table.className}ServiceImp extends BaseServiceImp<${table.className}> implements ${table.className}Service {
 
 	@Autowired
-	private ${table.className}Mapper ${table.tableAlias}BaseDao;
+	private ${table.className}Mapper ${table.javaProperty}BaseDao;
 	
 	@Override
 	public Integer saveOrUpdate(${table.className}WithBLOBs entity) {
 		if(entity.getId()==null){
-			${table.tableAlias}BaseDao.insertSelective(entity);
+			${table.javaProperty}BaseDao.insertSelective(entity);
 		}
 		else{
-			${table.tableAlias}BaseDao.updateByPrimaryKey(entity);
+			${table.javaProperty}BaseDao.updateByPrimaryKey(entity);
 		}
 		return entity.getId();
 	}
@@ -46,8 +46,8 @@ public class ${table.className}ServiceImp extends BaseServiceImp<${table.classNa
 		${table.className}Example example = new ${table.className}Example();
 		example.setLimitStart(page.getPageSize()*(page.getPageNum()-1));
 		example.setLimitEnd(page.getPageSize()*page.getPageNum());
-		List<${table.className}> list= ${table.tableAlias}BaseDao.selectByExample(example);
-		long totalRecord = ${table.tableAlias}BaseDao.countByExample(example);
+		List<${table.className}> list= ${table.javaProperty}BaseDao.selectByExample(example);
+		long totalRecord = ${table.javaProperty}BaseDao.countByExample(example);
 		page.setResults(list);
 		page.setTotalPage((int)totalRecord/page.getPageSize());
 		page.setTotalRecord((int)totalRecord);
@@ -56,24 +56,25 @@ public class ${table.className}ServiceImp extends BaseServiceImp<${table.classNa
 	
 	
 	public ${table.className} findById(Integer id){
-		return ${table.tableAlias}BaseDao.selectByPrimaryKey(id);
+		return ${table.javaProperty}BaseDao.selectByPrimaryKey(id);
 	}
 	@Override
 	public int saveSelective(${table.className} record) {
-		return ${table.tableAlias}BaseDao.insertSelective(record);
+		${table.javaProperty}BaseDao.insertSelective(record);
+		return record.getId();
 	}
 	
 	@Override
 	public List<${table.className}> findByExample(${table.className}Example example) {
-		return ${table.tableAlias}BaseDao.selectByExample(example);
+		return ${table.javaProperty}BaseDao.selectByExample(example);
 	}
 	@Override
 	public int updateByIdSelective(${table.className} record) {
-		return ${table.tableAlias}BaseDao.updateByPrimaryKeySelective(record);
+		return ${table.javaProperty}BaseDao.updateByPrimaryKeySelective(record);
 	}
 	@Override
 	public int deleteById(Integer id) {
-		return ${table.tableAlias}BaseDao.deleteByPrimaryKey(id);
+		return ${table.javaProperty}BaseDao.deleteByPrimaryKey(id);
 	}
 	
 	@Override
